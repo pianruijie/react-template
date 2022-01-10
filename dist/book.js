@@ -1,0 +1,2 @@
+!function(e,o){if("object"==typeof exports&&"object"==typeof module)module.exports=o();else if("function"==typeof define&&define.amd)define([],o);else{var t,f=o();for(t in f)("object"==typeof exports?exports:e)[t]=f[t]}}(self,(function(){return console.warn("ssss"),{}}));
+//# sourceMappingURL=book.js.map

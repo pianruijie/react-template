@@ -1,0 +1,37 @@
+// 用于配置babel的转码规则以及插件
+/** 1. 语法转译器
+    主要对最新的语法糖进行编译，不会编译新增的API和全局对象，如Promise、Symbol等
+    使用@babel/preset-env配置在预设中
+    官网地址：https://babeljs.io/docs/en/babel-preset-env/
+    2. 转译全局对象和新增API
+    转译Promise、Symbol等全局对象以及定义在全局对象的方法如Objec.assgin
+    使用@babel/polyfill or @babel/plugin-transform-runtime
+    前者会转译所有的对象和api，会增加包体积需要入口中手动import一次也可以在webpack的entry的import配置中引入一次
+    后者是全自动的不会污染全局api，需要配置在babelrc的plugins，同时后者有部分实例化方法是转换不了的，只能使用polyfill
+    3. jsx、ts等插件转移器
+    @babel/preset-react
+    @babel/preset-typescript等
+*/
+{
+    "presets": [
+        [
+            "@babel/preset-env", // 包含所有新特性，可以将新语法trans为不同环境支持的语法
+            {
+                "targets": {"chrome": 58, "ie": 9}
+            }
+        ],
+        "@babel/preset-typescript",
+        "@babel/preset-react"
+
+    ],
+    "plugins": [
+        [
+            "@babel/plugin-transform-runtime", {
+                "corejs": 3 //指定runtime-corejs的版本，目前有2、3两个版本
+            }
+        ],
+        ["@babel/plugin-proposal-decorators", {"legacy": true}],
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-transform-regenerator"
+    ]
+}
