@@ -9,7 +9,7 @@ module.exports = merge(baseConfig, {
     // 是否生成map.js,注意从webpack5开始顺序要求严格了
     devtool: 'eval-cheap-module-source-map',
     entry: {
-        book: path.join(__dirname, '../src/index.ts')
+        book: path.join(__dirname, '../src/index.tsx')
     },
     output: {
         // 这里的name是占位符，值为entry中指定的入口名称
