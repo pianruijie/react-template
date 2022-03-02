@@ -34,8 +34,6 @@ module.exports = merge(baseConfig, {
         compress: true,
         // 配置为only的时候，构建失败是不刷新页面作为回退
         hot: true,
-        // 看文档这玩意好像也是用来热更新的，待搞清除和hot的差别是啥 https://webpack.docschina.org/configuration/dev-server/#devserverlivereload
-        // liveReload: true,
         // headers, 可以为所有响应添加header https://webpack.docschina.org/configuration/dev-server/#devserverheaders
         // open: {
             // target: ['/'],
@@ -54,6 +52,8 @@ module.exports = merge(baseConfig, {
             watch: true
         },
         // 初始构建只有，将继续监听任何已解析文件的更改
+        // 文件变化时dev-server会重载页面，热更新只是模块替换 https://webpack.docschina.org/configuration/dev-server/#devserverlivereload
+        // liveReload: true,
         watchFiles: {
             paths: ['src/**/*', 'assets/*'],
             options: {

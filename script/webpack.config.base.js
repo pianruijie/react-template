@@ -1,19 +1,16 @@
-/*
- * @Author: your name
- * @Date: 2022-01-07 15:53:37
- * @LastEditTime: 2022-02-16 20:50:24
- * @LastEditors: your name
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: /baidu/personal-code/react-demo/script/webpack.config.base.js
- */
 /**
 * @file webpack.config.js webpack编译配置
 * @author pianruijie(pianruijie@baidu.com)
 */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const EsLintPlugin = require('eslint-webpack-plugin');
 
+/**
+ * 在使用 webpack 构建的典型应用程序或站点中，有三种主要的代码类型：
+    1.源码。
+    2.源码会依赖的任何第三方的 library 或 "vendor"
+    3.webpack的runtime 和 manifest，管理所有模块的交互：webpack 用来连接模块化应用程序所需的所有代码,通过使用 manifest 中的数据，runtime 将能够检索这些标识符，找出每个标识符背后对应的模块。
+ */
 module.exports = {
     module: {
         rules: [
@@ -56,10 +53,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'my react book',
             template: './index.html'
-        }),
-        // new EsLintPlugin({
-        //     eslintPath: 'eslint',
-        //     exclude: ['node_modules']
-        // })
+        })
     ]
 };
