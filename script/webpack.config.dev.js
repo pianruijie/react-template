@@ -17,13 +17,13 @@ module.exports = merge(baseConfig, {
         path: path.join(__dirname, '../dist'),
         libraryTarget: 'umd'
     },
-    externals: ['lodash'],
+    // externals: ['lodash', {react: 'React'}],
     plugins: [
         // 热更新插件 + devServer中配置hot: true 开启热更新 同时dev-server v4开始，hmr是默认启用的，自动配置该插件，只要设置hot即可
-        new webpack.HotModuleReplacementPlugin({
+        // new webpack.HotModuleReplacementPlugin({
             // 设置为true，插件回分成两步构建文件，首先编译加载chunks，之后再编译剩余的通常的资源
-            multiStep: true
-        })
+        //     multiStep: true
+        // })
     ],
     // 控制bundle信息如何显示:https://webpack.docschina.org/configuration/stats/
     stats: 'errors-only',

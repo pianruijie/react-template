@@ -327,7 +327,7 @@
         "no-unmodified-loop-condition": "error",
         // 禁止无用的表达式
         "no-unused-expressions": [
-            "error",
+            "warn",
             {
                 "allowShortCircuit": true,
                 "allowTernary": true,
@@ -576,7 +576,7 @@
         // @fixable 一个缩进必须用四个空格替代
         "indent": [
             "error",
-            4,
+            2,
             {
                 "SwitchCase": 1,
                 "flatTernaryExpressions": true
@@ -741,14 +741,14 @@
             }
         ],
         // @fixable 对象字面量只有一行时，大括号内的首尾必须有空格
-        "object-curly-spacing": [
+        /** "object-curly-spacing": [
             "error",
             "always",
             {
                 "arraysInObjects": true,
                 "objectsInObjects": false
             }
-        ],
+        ],**/
         // @fixable 对象字面量内的属性每行必须只有一个
         // @off 没必要限制
         "object-property-newline": "off",

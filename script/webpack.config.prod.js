@@ -2,19 +2,19 @@ const webpack = require('webpack');
 const path = require('path');
 const {merge} = require('webpack-merge');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const OptimizeCss = require('optimize-css-assets-webpack-plugin');
+// const OptimizeCss = require('optimize-css-assets-webpack-plugin');
 
 const baseConfig = require('./webpack.config.base');
 
 
 const getPlugins = () => {
     return [
-        new UglifyJSPlugin({
-            sourceMap: true
-        }),
-        new OptimizeCss({}),
+        // new UglifyJSPlugin({
+        //     sourceMap: true
+        // }),
+        // new OptimizeCss({}),
         // todo搞清楚作用
-        new webpack.optimize.ModuleConcatenationPlugin()
+        // new webpack.optimize.ModuleConcatenationPlugin()
     ].filter(Boolean);
 };
 

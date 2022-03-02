@@ -1,7 +1,4 @@
-// import {render} from 'react-dom'
-// import {UseStateDemo} from './hook';
-// import React from 'react';
-// render((
-//     <UseStateDemo/>
-// ), document.getElementById('app'));
-console.log(111);
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {UseStateDemo} from './hook';
+ReactDOM.render(<UseStateDemo />, document.getElementById('app'));
