@@ -13,8 +13,8 @@ const getPlugins = () => {
         //     sourceMap: true
         // }),
         // new OptimizeCss({}),
-        // todo搞清楚作用
-        // new webpack.optimize.ModuleConcatenationPlugin()
+        new webpack.optimize.ModuleConcatenationPlugin()
+        // 之前wbepack打包会将bundle中各模块单独达成闭包，会导致运行速度变慢，这个插件提供一个预编译功能，会将所有模块一起编译到一个模块中，称为作用域提升，提升运行速率
     ].filter(Boolean);
 };
 
