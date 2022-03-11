@@ -17,7 +17,6 @@ module.exports = merge(baseConfig, {
         path: path.join(__dirname, '../dist'),
         libraryTarget: 'umd'
     },
-    // externals: ['lodash', {react: 'React'}],
     plugins: [
         // 热更新插件 + devServer中配置hot: true 开启热更新 同时dev-server v4开始，hmr是默认启用的，自动配置该插件，只要设置hot即可
         // new webpack.HotModuleReplacementPlugin({

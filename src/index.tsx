@@ -1,5 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {UseStateDemo} from './hook';
+import {UseStateDemo, SplitDemo} from './hook';
 
-ReactDOM.render(<UseStateDemo />, document.getElementById('app'));
+ReactDOM.render(
+    <div>
+        <UseStateDemo />
+        <SplitDemo />
+    </div>,
+    document.getElementById('app')
+);

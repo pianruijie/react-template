@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const {merge} = require('webpack-merge');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+// const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 // const OptimizeCss = require('optimize-css-assets-webpack-plugin');
 
 const baseConfig = require('./webpack.config.base');
@@ -23,7 +23,8 @@ module.exports = merge(baseConfig, {
     bail: true,
     devtool: 'source-map',
     entry: {
-        book: path.join(__dirname, '../src/index.ts')
+        book: path.join(__dirname, '../src/index.tsx')
+
     },
     output: {
         filename: '[name].js',

@@ -1,10 +1,10 @@
 /**
-* @file webpack.config.js webpack编译配置
-* @author pianruijie(pianruijie@baidu.com)
-*/
+ * @file webpack.config.js webpack编译配置
+ * @author pianruijie(pianruijie@baidu.com)
+ */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const customPluginTest = require('./customPlugin/customPlugin');
 /**
  * 在使用 webpack 构建的典型应用程序或站点中，有三种主要的代码类型：
     1.源码。
@@ -22,48 +22,89 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
     2. non-initial：可以延迟加载的模块，出现在动态导入或者splitChunksPlugin时
     文档：https://webpack.docschina.org/plugins/split-chunks-plugin/
 */
+
 module.exports = {
-    module: {
-        rules: [
-            {
-                test: /\.tsx|.ts?$/,
-                use: 'babel-loader',
-                exclude: /node_modules/
-            },
-            {
-                test: /\.less$/,
-                use: 'less-loader'
-            },
-            // SVG Font
-            {
-                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-                use: {
-                    loader: 'url-loader',
-                    options: {
-                        limit: 10000,
-                        mimetype: 'image/svg+xml'
-                    }
-                }
-            },
-            // Common Image Formats
-            {
-                test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/,
-                use: 'url-loader'
-            }
+    resolveLoader: {
+        modules: [
+            path.resolve(__dirname, './customLoader'),
+            'node_modules'
         ]
     },
-    resolve: {
-        // 支持自动补全的文件后缀
-        extensions: [".ts", ".tsx", ".js"],
-        // 路径别名
-        alias: {
-            '@': path.resolve(__dirname, '../src')
+  module: {
+    rules: [
+    {
+        test: /\.tsx?$/,
+        use: 'customLoader',
+        exclude: /node_modules/
+        },
+      {
+        test: /\.tsx|.ts?$/,
+        use: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.less$/,
+        use: 'less-loader'
+      },
+      // SVG Font
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 10000,
+            mimetype: 'image/svg+xml'
+          }
         }
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            title: 'my react book',
-            template: './index.html'
-        })
+      },
+      // Common Image Formats
+      {
+        test: /\.(?:ico|gif|png|jpg|jpeg|webp)$/,
+        use: 'url-loader'
+      }
     ]
+  },
+  resolve: {
+    // 支持自动补全的文件后缀
+    extensions: ['.ts', '.tsx', '.js'],
+    // 路径别名
+    alias: {
+      '@': path.resolve(__dirname, '../src')
+    }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'my react book',
+      template: './index.html'
+    }),
+    new customPluginTest()
+  ],
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minChunks: 1,
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name(module, chunks, cacheGroupKey) {
+            const moduleFileName = module
+              .identifier()
+              .split('/')
+              .reduceRight((item) => item);
+            const allChunksNames = chunks.map((item) => item.name).join('~');
+            return `${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;},
+          priority: -10,
+          minChunks: 1,
+          reuseExistingChunk: true
+        },
+        common: {
+          test: /[\\/]src[\\/]/,
+          minChunks: 1,
+        //   minSize: 1,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  }
 };
