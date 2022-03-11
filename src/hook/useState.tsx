@@ -11,8 +11,8 @@ const Foo = () => {
   });
   return (
     <div>
-      <div>clicked {count} times</div>
-      {/* <button onClick={setCount(count + 1)}></button> */}
+               <div>clicked {count} times</div>
+                {/* <button onClick={setCount(count + 1)}></button> */}
     </div>
   );
 };

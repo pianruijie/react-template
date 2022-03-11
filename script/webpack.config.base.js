@@ -82,10 +82,23 @@ module.exports = {
   optimization: {
     splitChunks: {
       chunks: 'all',
-      minChunks: 1,
+      minChunks: 2,
       cacheGroups: {
-        defaultVendors: {
-          test: /[\\/]node_modules[\\/]/,
+        // defaultVendors: {
+        //   test: /[\\/]node_modules[\\/]/,
+        //   name(module, chunks, cacheGroupKey) {
+        //     const moduleFileName = module
+        //       .identifier()
+        //       .split('/')
+        //       .reduceRight((item) => item);
+        //     const allChunksNames = chunks.map((item) => item.name).join('~');
+        //     return `${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;},
+        //   priority: -10,
+        //   minChunks: 1,
+        //   reuseExistingChunk: true
+        // },
+        common: {
+          test: /[\\/]src[\\/]/,
           name(module, chunks, cacheGroupKey) {
             const moduleFileName = module
               .identifier()
@@ -93,14 +106,8 @@ module.exports = {
               .reduceRight((item) => item);
             const allChunksNames = chunks.map((item) => item.name).join('~');
             return `${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;},
-          priority: -10,
-          minChunks: 1,
-          reuseExistingChunk: true
-        },
-        common: {
-          test: /[\\/]src[\\/]/,
-          minChunks: 1,
-        //   minSize: 1,
+          minChunks: 2,
+          minSize: 1,
           priority: -20,
           reuseExistingChunk: true
         }
