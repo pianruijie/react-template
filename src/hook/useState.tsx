@@ -3,7 +3,6 @@ import {useState, useEffect} from 'react';
 import _ from 'lodash';
 import './a';
 
-
 const Foo = () => {
   const [count, setCount] = useState(0);
   useEffect(() => {
