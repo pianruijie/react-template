@@ -3,7 +3,7 @@ let flag = 0;
 let count = Math.pow(10, 9);
 
 const loop = () => {
-  while(flag<1000) {
+  while (flag < 1000) {
     flag++;
     result += count;
     count--;
@@ -12,5 +12,5 @@ const loop = () => {
   if (count > 0) {
     setTimeout(loop, 1);
   }
-}
+};
 loop();

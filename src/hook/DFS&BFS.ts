@@ -1,4 +1,4 @@
-import { node } from "../../../mock/webpack.config";
+import {node} from '../../../mock/webpack.config';
 
 const tree = [
   {
@@ -66,25 +66,25 @@ const tree = [
     ]
   }
 ];
-const DFS = (tree) => {
-    tree.forEach(node => {
-        console.log(node.value);
-        if (node.children) {
-            DFS(node.children);
-        }
-    })
-}
-const BFS = (tree) => {
-    let loop = [].concat(tree);
-    while(loop.length) {
-        let cur = loop.shift();
-        console.log(cur.value);
-        if (cur.children) {
-            loop = loop.concat(cur.children)
-        }
+const DFS = tree => {
+  tree.forEach(node => {
+    console.log(node.value);
+    if (node.children) {
+      DFS(node.children);
     }
-}
+  });
+};
+const BFS = tree => {
+  let loop = [].concat(tree);
+  while (loop.length) {
+    let cur = loop.shift();
+    console.log(cur.value);
+    if (cur.children) {
+      loop = loop.concat(cur.children);
+    }
+  }
+};
 console.log('深度优先');
-DFS(tree)
+DFS(tree);
 console.log('广度优先');
-BFS(tree)
+BFS(tree);
