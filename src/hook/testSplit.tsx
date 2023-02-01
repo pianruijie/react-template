@@ -5,7 +5,11 @@ import './a';
 
 const bar = () => {
   useEffect(() => {
-    console.log(_.join(['Hello', 'webpack2'], ' '));
+    let user: User = {
+      name: '',
+      age: 123
+    };
+    console.log(user);
   });
   return (
     <div>

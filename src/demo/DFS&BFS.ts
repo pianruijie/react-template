@@ -1,5 +1,3 @@
-import {node} from '../../../mock/webpack.config';
-
 const tree = [
   {
     value: 'a',
