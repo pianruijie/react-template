@@ -11,6 +11,7 @@ const all = (list: any[]) => {
           })
           .catch(err => reject(err));
       } else {
+        result[i] = list[i];
       }
     }
   });

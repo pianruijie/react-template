@@ -4,7 +4,7 @@
     使用@babel/preset-env配置在预设中
     官网地址：https://babeljs.io/docs/en/babel-preset-env/
     2. 转译全局对象和新增API
-    转译Promise、Symbol等全局对象以及定义在全局对象的方法如Objec.assgin
+    转译Promise、Symbol等全局对象以及定义在全局对象的方法如Object.assgin
     使用@babel/polyfill or @babel/plugin-transform-runtime
     前者会转译所有的对象和api，会增加包体积需要入口中手动import一次也可以在webpack的entry的import配置中引入一次
     后者是全自动的不会污染全局api，需要配置在babelrc的plugins，同时后者有部分实例化方法是转换不了的，只能使用polyfill
