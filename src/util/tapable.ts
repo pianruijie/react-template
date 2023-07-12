@@ -1,4 +1,4 @@
-import { Function } from 'lodash';
+import {Function} from 'lodash';
 import {SyncHook} from 'tapable';
 // 粗略模拟webpack的插件机制
 class B {
@@ -38,7 +38,7 @@ class A {
     this.compilation.run();
   }
 }
-const plugin1  = (compilation: B) => {
+const plugin1 = (compilation: B) => {
   compilation.hooks.makeHook.tap('plugin1', (desc: any) => {
     console.log(desc);
   });
