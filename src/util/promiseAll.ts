@@ -6,10 +6,10 @@ const all = (list: any[]) => {
     for (let i = 0; i < count; i++) {
       if (list[i].then) {
         list[i]
-          .then(res => {
+          .then((res: any) => {
             result[i] = res;
           })
-          .catch(err => reject(err));
+          .catch((err: any) => reject(err));
       } else {
         result[i] = list[i];
       }

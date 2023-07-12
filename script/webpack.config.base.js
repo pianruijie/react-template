@@ -24,19 +24,16 @@ const customPluginTest = require('./customPlugin/customPlugin');
 */
 
 module.exports = {
-    resolveLoader: {
-        modules: [
-            path.resolve(__dirname, './customLoader'),
-            'node_modules'
-        ]
-    },
+  resolveLoader: {
+    modules: [path.resolve(__dirname, './customLoader'), 'node_modules']
+  },
   module: {
     rules: [
-    {
+      {
         test: /\.tsx?$/,
         use: 'customLoader',
         exclude: /node_modules/
-        },
+      },
       {
         test: /\.tsx|.ts?$/,
         use: 'babel-loader',
@@ -90,13 +87,14 @@ module.exports = {
             const moduleFileName = module
               .identifier()
               .split('/')
-              .reduceRight((item) => item);
-            const allChunksNames = chunks.map((item) => item.name).join('~');
-            return `${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;},
+              .reduceRight(item => item);
+            const allChunksNames = chunks.map(item => item.name).join('~');
+            return `${cacheGroupKey}-${allChunksNames}-${moduleFileName}`;
+          },
           priority: -10,
           minChunks: 1,
           reuseExistingChunk: true
-        },
+        }
         // common: {
         //   test: /[\\/]src[\\/]/,
         //   name(module, chunks, cacheGroupKey) {
