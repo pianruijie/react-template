@@ -75,7 +75,7 @@ const DFS = tree => {
 const BFS = tree => {
   let loop = [].concat(tree);
   while (loop.length) {
-    let cur = loop.shift();
+    const cur = loop.shift();
     console.log(cur.value);
     if (cur.children) {
       loop = loop.concat(cur.children);

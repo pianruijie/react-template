@@ -1,7 +1,8 @@
-import React from 'react';
-import {useState, useEffect} from 'react';
-import _ from 'lodash';
 import './a';
+
+import _ from 'lodash';
+import React from 'react';
+import {useEffect, useState} from 'react';
 
 const Foo = () => {
   const [count, setCount] = useState(0);

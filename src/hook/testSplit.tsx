@@ -1,11 +1,12 @@
-import React from 'react';
-import {useState, useEffect} from 'react';
-import _ from 'lodash';
 import './a';
+
+import _ from 'lodash';
+import React from 'react';
+import {useEffect, useState} from 'react';
 
 const bar = () => {
   useEffect(() => {
-    let user: User = {
+    const user: User = {
       name: '',
       age: 123
     };

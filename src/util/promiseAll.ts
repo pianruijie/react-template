@@ -1,6 +1,6 @@
 const all = (list: any[]) => {
-  let result = [];
-  let count = list.length;
+  const result = [];
+  const count = list.length;
 
   return new Promise((resolve, reject) => {
     for (let i = 0; i < count; i++) {
