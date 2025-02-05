@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import {SplitDemo, UseStateDemo} from './hook';
-
+import LazyLoad from '@/page/virtualList';
+console.log(LazyLoad);
 ReactDOM.render(
   <div>
-    <UseStateDemo />
-    <SplitDemo />
+    <LazyLoad />
   </div>,
   document.getElementById('app')
 );
